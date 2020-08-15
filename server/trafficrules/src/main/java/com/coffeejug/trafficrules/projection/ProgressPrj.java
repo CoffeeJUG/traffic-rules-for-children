@@ -1,4 +1,4 @@
-package com.coffeejug.trafficrules.Projection;
+package com.coffeejug.trafficrules.projection;
 
 public interface ProgressPrj {
 
