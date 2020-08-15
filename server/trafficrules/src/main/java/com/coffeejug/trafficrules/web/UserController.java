@@ -1,7 +1,7 @@
 package com.coffeejug.trafficrules.web;
 
-import com.coffeejug.trafficrules.Projection.ProgressPrj;
 import com.coffeejug.trafficrules.dto.UserCodeDto;
+import com.coffeejug.trafficrules.projection.ProgressPrj;
 import com.coffeejug.trafficrules.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
 package com.coffeejug.trafficrules.service;
 
-import com.coffeejug.trafficrules.Projection.ProgressPrj;
 import com.coffeejug.trafficrules.db.Progress;
 import com.coffeejug.trafficrules.db.User;
 import com.coffeejug.trafficrules.dto.UserCodeDto;
+import com.coffeejug.trafficrules.projection.ProgressPrj;
 import com.coffeejug.trafficrules.repository.UserRepository;
 import com.coffeejug.trafficrules.util.CodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
