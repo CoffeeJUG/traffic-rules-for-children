@@ -1,0 +1,6 @@
+doc
+logs
+/back/trafficrules/src/main/resources/application.properties
+.mvn
+/back/trafficrules/mvnw
+/back/trafficrules/mvnw.cmd
