@@ -1,0 +1,9 @@
+.idea
+.mvn
+/server/trafficrules/logs
+/server/trafficrules/src/main/resources/application.properties
+/server/trafficrules/trafficrules.iml
+/server/trafficrules/mvnw
+/server/trafficrules/mvnw.cmd
+
+/server/trafficrules/target
