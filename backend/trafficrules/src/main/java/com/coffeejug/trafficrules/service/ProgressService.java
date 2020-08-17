@@ -2,7 +2,7 @@ package com.coffeejug.trafficrules.service;
 
 import com.coffeejug.trafficrules.db.Progress;
 import com.coffeejug.trafficrules.db.User;
-import com.coffeejug.trafficrules.projection.ProgressPrj;
+import com.coffeejug.trafficrules.projection.ProgressProjection;
 import com.coffeejug.trafficrules.repository.ProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class ProgressService {
     @Autowired
     private ProgressRepository progressRepository;
 
-    public List<ProgressPrj> findAllByUser(User user) {
+    public List<ProgressProjection> findAllByUser(User user) {
         return progressRepository.findAllByUser(user);
     }
 

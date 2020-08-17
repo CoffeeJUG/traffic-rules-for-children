@@ -1,6 +1,6 @@
 package com.coffeejug.trafficrules.projection;
 
-public interface ProgressPrj {
+public interface ProgressProjection {
 
     String getMockProgress();
 }

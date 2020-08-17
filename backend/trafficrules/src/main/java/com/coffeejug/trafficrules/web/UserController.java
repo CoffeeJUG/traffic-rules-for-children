@@ -1,7 +1,7 @@
 package com.coffeejug.trafficrules.web;
 
 import com.coffeejug.trafficrules.dto.UserCodeDto;
-import com.coffeejug.trafficrules.projection.ProgressPrj;
+import com.coffeejug.trafficrules.projection.ProgressProjection;
 import com.coffeejug.trafficrules.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/v1/user/progress")
-    public ResponseEntity<List<ProgressPrj>> getUserProgress(@RequestParam String code) {
+    public ResponseEntity<List<ProgressProjection>> getUserProgress(@RequestParam String code) {
 
         if (code == null || code.length() != 10) {
             return new ResponseEntity("Wrong code", HttpStatus.BAD_REQUEST);
