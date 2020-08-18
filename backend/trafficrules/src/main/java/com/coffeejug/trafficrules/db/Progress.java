@@ -12,7 +12,7 @@ public class Progress {
     private Integer id;
 
     private String mockProgress;
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
