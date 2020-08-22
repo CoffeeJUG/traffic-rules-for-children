@@ -20,20 +20,20 @@ public class UserController {
 
 
     @GetMapping("/v1/user/code")
-    public ResponseEntity<UserCodeDto> generateUserCode() {
-        return new ResponseEntity<UserCodeDto>(userService.generateUserCode(), HttpStatus.OK);
+    public UserCodeDto generateUserCode() {
+        return userService.generateUserCode();
     }
 
     @GetMapping("/v1/user/progress")
-    public ResponseEntity<List<ProgressProjection>> getUserProgress(@RequestParam String code) {
+    public List<ProgressProjection> getUserProgress(@RequestParam String code) {
 
         if (code == null || code.length() != 10) {
-            return new ResponseEntity("Wrong code", HttpStatus.BAD_REQUEST);
+            throw new BadRequestException("Wrong code");
         }
         if (!userService.existsByCode(code)) {
-            return new ResponseEntity("Code does not exists", HttpStatus.BAD_REQUEST);
+            throw new BadRequestException("Code does not exists");
         }
-        return new ResponseEntity<>(userService.getUserProgress(code), HttpStatus.OK);
+        return userService.getUserProgress(code);
     }
 
     @PostMapping("/v1/user/progress")
