@@ -3,6 +3,7 @@ package com.coffeejug.trafficrules.service;
 import com.coffeejug.trafficrules.db.Progress;
 import com.coffeejug.trafficrules.db.User;
 import com.coffeejug.trafficrules.dto.UserCodeDto;
+import com.coffeejug.trafficrules.exception.BadRequestException;
 import com.coffeejug.trafficrules.projection.ProgressProjection;
 import com.coffeejug.trafficrules.repository.UserRepository;
 import com.coffeejug.trafficrules.util.CodeGenerator;
@@ -44,12 +45,25 @@ public class UserService {
 
     public List<ProgressProjection> getUserProgress(String code) {
 
+        checkCode(code);
+
         User user = userRepository.findByCode(code);
         if (user == null) return new ArrayList<>();
         return progressService.findAllByUser(user);
     }
 
+    private void checkCode(String code) {
+        if (code == null || code.length() != 10) {
+            throw new BadRequestException("Wrong code");
+        }
+        if (!existsByCode(code)) {
+            throw new BadRequestException("Code does not exists");
+        }
+    }
+
     public void saveUserProgress(String code, String mockProgress) {
+
+        checkCode(code);
 
         User user = userRepository.findByCode(code);
         if (user != null) {
