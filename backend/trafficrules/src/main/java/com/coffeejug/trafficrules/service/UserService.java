@@ -2,16 +2,15 @@ package com.coffeejug.trafficrules.service;
 
 import com.coffeejug.trafficrules.db.Progress;
 import com.coffeejug.trafficrules.db.User;
-import com.coffeejug.trafficrules.dto.UserCodeDto;
-import com.coffeejug.trafficrules.exception.BadRequestException;
+import com.coffeejug.trafficrules.dto.UserDto;
 import com.coffeejug.trafficrules.projection.ProgressProjection;
 import com.coffeejug.trafficrules.repository.UserRepository;
-import com.coffeejug.trafficrules.util.CodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -21,55 +20,51 @@ public class UserService {
     @Autowired
     private ProgressService progressService;
 
-    public UserCodeDto generateUserCode() {
 
-        // search for code
-        String code;
-        while (existsByCode(code = CodeGenerator.generateCode())) ;
+    public UserDto createNew() {
 
-        // create new user with this code and save it to DB
-        User user = new User(code);
-        userRepository.save(user);
+        User user = new User();
+        user = userRepository.save(user);
+        UserDto userDto = new UserDto(user.getUuid().toString());
+        return userDto;
+    }
 
-        // return DTO with code
-        return new UserCodeDto(code);
+    public List<ProgressProjection> getUserProgress(String uuid) {
+
+        if (goodUUID(uuid)) {
+            User user = userRepository.findById(UUID.fromString(uuid)).get();
+            return progressService.findAllByUser(user);
+        }
+        return new ArrayList<>();
+    }
+
+    private boolean goodUUID(String uuid) {
+
+        if ((uuid != null) && (uuid.length() == 36)) {
+            return true;
+        }
+        return false;
     }
 
 
-    public boolean existsByCode(String code) {
-        if (code == null) {
-            return false;
+    public User getOne(UUID id) {
+
+        if (userRepository.existsById(id)) {
+            return userRepository.getOne(id);
         }
-        return userRepository.existsByCode(code);
+        return null;
     }
 
-    public List<ProgressProjection> getUserProgress(String code) {
 
-        checkCode(code);
+    public List<ProgressProjection> saveUserProgress(String uuid, String progress) {
 
-        User user = userRepository.findByCode(code);
-        if (user == null) return new ArrayList<>();
-        return progressService.findAllByUser(user);
-    }
-
-    private void checkCode(String code) {
-        if (code == null || code.length() != 10) {
-            throw new BadRequestException("Wrong code");
+        if (goodUUID(uuid)) {
+            User user = getOne(UUID.fromString(uuid));
+            if (user != null) {
+                Progress userProgress = new Progress(progress, user);
+                progressService.save(userProgress);
+            }
         }
-        if (!existsByCode(code)) {
-            throw new BadRequestException("Code does not exists");
-        }
-    }
-
-    public void saveUserProgress(String code, String mockProgress) {
-
-        checkCode(code);
-
-        User user = userRepository.findByCode(code);
-        if (user != null) {
-            Progress progress = new Progress(mockProgress, user);
-            progressService.save(progress);
-        }
-
+        return null;
     }
 }
