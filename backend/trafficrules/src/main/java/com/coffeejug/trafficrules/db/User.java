@@ -15,6 +15,10 @@ public class User {
     @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
 
+    @Column(columnDefinition = "INT NOT NULL DEFAULT '0'")
+    private int levelsCompleted;
+
+    private String name;
 
     public UUID getUuid() {
         return uuid;
@@ -22,5 +26,21 @@ public class User {
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public int getLevelsCompleted() {
+        return levelsCompleted;
+    }
+
+    public void setLevelsCompleted(int levelsCompleted) {
+        this.levelsCompleted = levelsCompleted;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

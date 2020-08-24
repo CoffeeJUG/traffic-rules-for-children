@@ -1,12 +1,10 @@
 package com.coffeejug.trafficrules.web;
 
 import com.coffeejug.trafficrules.dto.UserDto;
-import com.coffeejug.trafficrules.projection.ProgressProjection;
+import com.coffeejug.trafficrules.exception.NotFoundException;
 import com.coffeejug.trafficrules.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -15,22 +13,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public UserDto createNew() {
-        return userService.createNew();
+
+    @GetMapping("/{uuid}")
+    public UserDto getOne(@PathVariable("uuid") String uuid) {
+
+        if (userService.existsById(uuid)) {
+            return userService.findById(uuid);
+        }
+        throw new NotFoundException("User not found");
     }
 
-    @GetMapping("/{uuid}/progress")
-    public List<ProgressProjection> getUserProgress(@PathVariable String uuid) {
 
-        return userService.getUserProgress(uuid);
-    }
+    @PostMapping
+    public UserDto getUserProgress(@RequestBody UserDto user) {
 
-    @PostMapping("/{uuid}/progress")
-    public void setUserProgress(@PathVariable String uuid,
-                                @RequestParam String progress) {
-
-        userService.saveUserProgress(uuid, progress);
+        return userService.save(user);
     }
 
 }

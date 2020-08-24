@@ -1,15 +1,12 @@
 package com.coffeejug.trafficrules.service;
 
-import com.coffeejug.trafficrules.db.Progress;
 import com.coffeejug.trafficrules.db.User;
 import com.coffeejug.trafficrules.dto.UserDto;
-import com.coffeejug.trafficrules.projection.ProgressProjection;
 import com.coffeejug.trafficrules.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,28 +15,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private ProgressService progressService;
+    private ModelMapper modelMapper;
 
-
-    public UserDto createNew() {
-
-        User user = new User();
-        user = userRepository.save(user);
-        UserDto userDto = new UserDto(user.getUuid().toString());
-        return userDto;
-    }
-
-    public List<ProgressProjection> getUserProgress(String uuid) {
-
-        if (goodUUID(uuid)) {
-
-            User user = userRepository.getOne(UUID.fromString(uuid));
-            if (user != null) {
-                return progressService.findAllByUser(user);
-            }
-        }
-        return new ArrayList<>();
-    }
 
     private boolean goodUUID(String uuid) {
 
@@ -50,23 +27,36 @@ public class UserService {
     }
 
 
-    public User getOne(UUID id) {
+    public UserDto findById(String id) {
 
-        if (userRepository.existsById(id)) {
-            return userRepository.getOne(id);
+        if (goodUUID(id)) {
+            return findById(UUID.fromString(id));
         }
         return null;
     }
 
+    public UserDto findById(UUID id) {
 
-    public void saveUserProgress(String uuid, String progress) {
+        if (userRepository.existsById(id)) {
+            User user = userRepository.findById(id).get();
+            user.getLevelsCompleted();
+            return modelMapper.map(user, UserDto.class);
+        }
+        return null;
+    }
+
+    public boolean existsById(String uuid) {
 
         if (goodUUID(uuid)) {
-            User user = getOne(UUID.fromString(uuid));
-            if (user != null) {
-                Progress userProgress = new Progress(progress, user);
-                progressService.save(userProgress);
-            }
+            return userRepository.existsById(UUID.fromString(uuid));
         }
+        return false;
+    }
+
+    public UserDto save(UserDto userDto) {
+
+        User user = modelMapper.map(userDto, User.class);
+        user = userRepository.save(user);
+        return modelMapper.map(user, UserDto.class);
     }
 }
