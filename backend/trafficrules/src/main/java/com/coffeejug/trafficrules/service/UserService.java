@@ -32,8 +32,11 @@ public class UserService {
     public List<ProgressProjection> getUserProgress(String uuid) {
 
         if (goodUUID(uuid)) {
-            User user = userRepository.findById(UUID.fromString(uuid)).get();
-            return progressService.findAllByUser(user);
+
+            User user = userRepository.getOne(UUID.fromString(uuid));
+            if (user != null) {
+                return progressService.findAllByUser(user);
+            }
         }
         return new ArrayList<>();
     }
