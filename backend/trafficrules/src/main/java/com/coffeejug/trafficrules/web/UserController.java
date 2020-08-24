@@ -27,10 +27,10 @@ public class UserController {
     }
 
     @PostMapping("/{uuid}/progress")
-    public List<ProgressProjection> setUserProgress(@PathVariable String uuid,
-                                                      @RequestParam String progress) {
+    public void setUserProgress(@PathVariable String uuid,
+                                @RequestParam String progress) {
 
-        return userService.saveUserProgress(uuid, progress);
+        userService.saveUserProgress(uuid, progress);
     }
 
 }

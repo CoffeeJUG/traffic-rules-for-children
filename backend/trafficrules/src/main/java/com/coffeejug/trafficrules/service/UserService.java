@@ -59,7 +59,7 @@ public class UserService {
     }
 
 
-    public List<ProgressProjection> saveUserProgress(String uuid, String progress) {
+    public void saveUserProgress(String uuid, String progress) {
 
         if (goodUUID(uuid)) {
             User user = getOne(UUID.fromString(uuid));
@@ -68,6 +68,5 @@ public class UserService {
                 progressService.save(userProgress);
             }
         }
-        return null;
     }
 }
