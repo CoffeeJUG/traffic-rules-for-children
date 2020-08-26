@@ -1,10 +1,10 @@
 package com.coffeejug.trafficrules.service;
 
-import java.util.Optional;
 import java.util.UUID;
-import com.coffeejug.trafficrules.exception.BadRequestException;
-import com.coffeejug.trafficrules.model.User;
 import com.coffeejug.trafficrules.dto.UserDto;
+import com.coffeejug.trafficrules.exception.BadRequestException;
+import com.coffeejug.trafficrules.exception.NotFoundException;
+import com.coffeejug.trafficrules.model.User;
 import com.coffeejug.trafficrules.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,10 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-    public Optional<User> findById(String id) {
-        return userRepository.findById(parseUUID(id));
+    public UserDto findById(String id) {
+        return userRepository.findById(parseUUID(id))
+                .map(user -> modelMapper.map(user, UserDto.class))
+                .orElseThrow(() -> new NotFoundException("User not found"));
     }
 
     public UserDto save(UserDto userDto) {
