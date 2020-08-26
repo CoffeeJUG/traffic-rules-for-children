@@ -13,7 +13,7 @@ public class TrafficrulesApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TrafficrulesApplication.class, args);
-        logger.warn("Started...");
+        logger.info("Started...");
     }
 
 }

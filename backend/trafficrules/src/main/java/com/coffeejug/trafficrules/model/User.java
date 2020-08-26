@@ -1,4 +1,4 @@
-package com.coffeejug.trafficrules.db;
+package com.coffeejug.trafficrules.model;
 
 import org.hibernate.annotations.GenericGenerator;
 

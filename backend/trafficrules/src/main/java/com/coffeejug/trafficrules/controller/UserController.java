@@ -1,14 +1,18 @@
-package com.coffeejug.trafficrules.web;
+package com.coffeejug.trafficrules.controller;
 
-import com.coffeejug.trafficrules.db.User;
+import java.util.Optional;
+import com.coffeejug.trafficrules.model.User;
 import com.coffeejug.trafficrules.dto.UserDto;
 import com.coffeejug.trafficrules.exception.NotFoundException;
 import com.coffeejug.trafficrules.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/users")
