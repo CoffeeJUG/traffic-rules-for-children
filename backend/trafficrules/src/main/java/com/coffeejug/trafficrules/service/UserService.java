@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,6 +19,7 @@ public class UserService {
     private ModelMapper modelMapper;
 
 
+
     private boolean goodUUID(String uuid) {
 
         if ((uuid != null) && (uuid.length() == 36)) {
@@ -27,22 +29,17 @@ public class UserService {
     }
 
 
-    public UserDto findById(String id) {
+    public Optional<User> findById(String id) {
 
         if (goodUUID(id)) {
             return findById(UUID.fromString(id));
         }
-        return null;
+        return Optional.empty();
     }
 
-    public UserDto findById(UUID id) {
+    public Optional<User> findById(UUID id) {
 
-        if (userRepository.existsById(id)) {
-            User user = userRepository.findById(id).get();
-            user.getLevelsCompleted();
-            return modelMapper.map(user, UserDto.class);
-        }
-        return null;
+        return userRepository.findById(id);
     }
 
     public boolean existsById(String uuid) {
