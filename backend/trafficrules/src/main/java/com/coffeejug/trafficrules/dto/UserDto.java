@@ -1,5 +1,6 @@
 package com.coffeejug.trafficrules.dto;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class UserDto {
@@ -19,9 +20,8 @@ public class UserDto {
     }
 
     public void setUuid(String uuid) {
-        if (uuid != null) {
-            this.uuid = UUID.fromString(uuid);
-        }
+        Objects.requireNonNull(uuid);
+        this.uuid = UUID.fromString(uuid);
     }
 
     public int getLevelsCompleted() {

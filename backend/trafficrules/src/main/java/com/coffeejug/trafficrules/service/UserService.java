@@ -7,6 +7,7 @@ import com.coffeejug.trafficrules.model.User;
 import com.coffeejug.trafficrules.dto.UserDto;
 import com.coffeejug.trafficrules.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,13 +16,14 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
+    @Autowired
     public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
 
     public Optional<User> findById(String id) {
-        return userRepository.findById(UUID.fromString(id));
+        return userRepository.findById(parseUUID(id));
     }
 
     public UserDto save(UserDto userDto) {
@@ -33,7 +35,7 @@ public class UserService {
         try {
             return UUID.fromString(uuid);
         } catch (IllegalArgumentException e) {
-            throw new BadRequestException();
+            throw new BadRequestException("Invalid UUID " + uuid);
         }
     }
 }
