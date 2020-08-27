@@ -1,0 +1,10 @@
+.idea
+.mvn
+/backend/trafficrules/HELP.md
+/backend/trafficrules/mvnw
+/backend/trafficrules/mvnw.cmd
+/backend/trafficrules/logs
+/backend/trafficrules/target
+/backend/trafficrules/src/main/resources/application.properties
+/backend/trafficrules/doc
+/backend/trafficrules/trafficrules.iml
