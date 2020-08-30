@@ -4,6 +4,7 @@ function App() {
   return (
     <div>
       traffic-rules-for-children
+      <PuzzlePage></PuzzlePage>
     </div>
   );
 }
