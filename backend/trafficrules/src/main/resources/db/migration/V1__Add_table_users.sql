@@ -1,7 +1,7 @@
-create table users
+CREATE TABLE users
 (
-    uuid             BINARY(16) not null,
+    uuid             BINARY(16) NOT NULL,
     levels_completed INT        NOT NULL DEFAULT '0',
-    name             varchar(255),
-    primary key (uuid)
+    name             VARCHAR(255),
+    PRIMARY KEY (uuid)
 )
