@@ -1,3 +1,31 @@
+.puzzle-page__variant {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .puzzle__color {
   border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  margin: 0 0.5em;
+}
+
+.puzzle__color--green {
+  background-color: green;
+}
+
+.puzzle__color--yellow {
+  background-color: yellow;
+}
+
+.puzzle__color--red {
+  background-color: red;
+}
+
+.puzzle-variant__puzzle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
