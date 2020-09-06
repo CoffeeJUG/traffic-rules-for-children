@@ -2,7 +2,9 @@ package com.coffeejug.trafficrules.dto;
 
 import java.util.Objects;
 import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
     public UserDto(UUID uuid, int levelsCompleted, String name) {
