@@ -22,6 +22,11 @@ public class User {
         this.name = name;
     }
 
+    public User(int levelsCompleted, String name) {
+        this.levelsCompleted = levelsCompleted;
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")

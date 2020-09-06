@@ -27,7 +27,9 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
@@ -60,7 +62,7 @@ class UserControllerTest {
     @Test
     void shouldCreateNewUser() throws Exception {
         UserDto userDto = new UserDto(null, 0, "John Doe");
-        MvcResult mvcResult = this.mockMvc.perform(post("/api/v1/users")
+        MvcResult mvcResult = mockMvc.perform(post("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userDto)))
                 .andExpect(status().isOk())
@@ -70,6 +72,17 @@ class UserControllerTest {
         Optional<User> userInDb = userRepository.findById(createdUser.getUuid());
         assertThat(userInDb)
                 .contains(new User(createdUser.getUuid(), createdUser.getLevelsCompleted(), createdUser.getName()));
+    }
+
+    @Test
+    void shouldFindExistingUser() throws Exception {
+        User existingUser = userRepository.save(new User(27, "Chad Smith"));
+
+        mockMvc.perform(get("/api/v1/users/{uuid}", existingUser.getUuid().toString()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.uuid").value(existingUser.getUuid().toString()))
+                .andExpect(jsonPath("$.levelsCompleted").value(27))
+                .andExpect(jsonPath("$.name").value("Chad Smith"));
     }
 
     public static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
