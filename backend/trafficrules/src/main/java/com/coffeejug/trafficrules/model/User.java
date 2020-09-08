@@ -1,13 +1,31 @@
 package com.coffeejug.trafficrules.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "users")
 public class User {
+
+    public User() {
+    }
+
+    public User(UUID uuid, int levelsCompleted, String name) {
+        this.uuid = uuid;
+        this.levelsCompleted = levelsCompleted;
+        this.name = name;
+    }
+
+    public User(int levelsCompleted, String name) {
+        this.levelsCompleted = levelsCompleted;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -42,5 +60,20 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return levelsCompleted == user.levelsCompleted &&
+                Objects.equals(uuid, user.uuid) &&
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid, levelsCompleted, name);
     }
 }
