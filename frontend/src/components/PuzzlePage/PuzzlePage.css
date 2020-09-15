@@ -1,8 +1,69 @@
-.puzzle-page__variant {
+.link {
+  text-decoration: none;
+  color: #20b3d3;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.puzzle-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100vw;
+  padding: 2em 0;
+}
+
+.navigation__link {
+  padding: 0 1em;
+}
+
+.puzzle-page__image > img {
+  height: 100vh;
+}
+
+.puzzle-page__puzzle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.puzzle-page__choose {
+  margin: 0 auto;
+  padding: 5em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  align-self: baseline;
+}
+
+.puzzle-page__variant {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.puzzle-page__button {
+  background-color: #20b3d3;
+  padding: 1em 2.5em;
+  border-radius: 100px;
+  text-decoration: none;
+  color: white;
 }
 
 .puzzle__color {
