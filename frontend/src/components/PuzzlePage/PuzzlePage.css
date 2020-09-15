@@ -1,7 +1,10 @@
+* {
+  font-family: Roboto;
+}
+
 .link {
   text-decoration: none;
   color: #20b3d3;
-  font-family: Roboto;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
@@ -46,10 +49,12 @@
 }
 
 .puzzle-page__instruction {
+  font-weight: 300;
+  font-size: 30px;
   position: absolute;
   bottom: 10%;
-  left: 16%;
-  padding: 2em 3em;
+  left: 2%;
+  padding: 0.5em 1em;
   background: #fffadf;
   border-radius: 20px;
 }
