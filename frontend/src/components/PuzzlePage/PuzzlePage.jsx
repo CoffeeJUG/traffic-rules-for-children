@@ -24,6 +24,10 @@ let PuzzlePage = () => {
       <div className="puzzle-page__puzzle">
         <div className="puzzle-page__image">
           <img src="/pictures/road-traffic-bg-img.png" alt="road-traffic"></img>
+
+          <div className="puzzle-page__instruction">
+            Встав кольори в правильному порядку.
+          </div>
         </div>
 
         <div className="puzzle-page__choose">

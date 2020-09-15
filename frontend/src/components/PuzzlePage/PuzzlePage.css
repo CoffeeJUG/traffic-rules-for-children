@@ -24,10 +24,15 @@
   background-color: rgba(255, 255, 255, 0.5);
   width: 100vw;
   padding: 2em 0;
+  z-index: 100000;
 }
 
 .navigation__link {
   padding: 0 1em;
+}
+
+.puzzle-page__image {
+  position: relative;
 }
 
 .puzzle-page__image > img {
@@ -38,6 +43,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.puzzle-page__instruction {
+  position: absolute;
+  bottom: 10%;
+  left: 16%;
+  padding: 2em 3em;
+  background: #fffadf;
+  border-radius: 20px;
 }
 
 .puzzle-page__choose {
