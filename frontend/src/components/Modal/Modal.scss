@@ -1,0 +1,13 @@
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  .modal__icon {
+    position: absolute;
+    top: -2%;
+    left: 40%;
+  }
+}

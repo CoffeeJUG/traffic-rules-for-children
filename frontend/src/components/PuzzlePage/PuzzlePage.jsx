@@ -1,11 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
+import Modal from '../Modal/Modal';
 import './PuzzlePage.css';
-import $ from 'jquery';
 
 class PuzzlePage extends Component {
-  componentDidMount() {}
-
   render() {
     return (
       <div className="puzzle-page">
@@ -86,7 +84,7 @@ class PuzzlePage extends Component {
                 ></div>
               </div>
             </div>
-            <a href="/" className="puzzle-page__button">
+            <a href="/" className="puzzle-page__button" onClick="sendAnswer()">
               Готово
             </a>
           </div>
