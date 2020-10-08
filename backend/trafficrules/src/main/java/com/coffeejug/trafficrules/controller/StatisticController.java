@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/statistic")
+@RequestMapping("/api/v1/statistics")
 public class StatisticController {
 
+    private final StatisticService statisticService;
+
     @Autowired
-    private StatisticService statisticService;
+    public StatisticController(StatisticService statisticService) {
+        this.statisticService = statisticService;
+    }
 
     @GetMapping("/uptime")
     public long getUptime() {
