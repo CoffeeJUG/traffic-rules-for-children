@@ -1,29 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
-import Modal from '../Modal/Modal';
 import './PuzzlePage.css';
+import Instruction from '../pages/Instruction/Instruction';
 
 class PuzzlePage extends Component {
   render() {
     return (
       <div className="puzzle-page">
-        <div className="header">
-          <a className="header__link link" href="/">
-            Logo
-          </a>
-          <nav className="navigation">
-            <a className="navigation__link link" href="/">
-              Карта
-            </a>
-            <a className="navigation__link link" href="/">
-              Кращі гравці
-            </a>
-            <a className="navigation__link link" href="/">
-              Мій профіль
-            </a>
-          </nav>
-        </div>
-
         <div className="puzzle-page__puzzle">
           <div className="puzzle-page__image">
             <img
@@ -31,9 +14,7 @@ class PuzzlePage extends Component {
               alt="road-traffic"
             ></img>
 
-            <div className="puzzle-page__instruction">
-              Встав кольори в правильному порядку.
-            </div>
+            <Instruction></Instruction>
           </div>
 
           <div className="puzzle-page__choose">
