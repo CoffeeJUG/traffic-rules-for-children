@@ -1,0 +1,35 @@
+@import '../../../styles/colors.scss';
+
+.quest-main {
+  display: block;
+  width: auto;
+
+  .quest-main__task {
+    position: relative;
+
+    div {
+      .quest-main-img {
+        display: inline;
+        max-width: fit-content;
+      }
+    }
+
+    .quest-info {
+      font-weight: 300;
+      font-size: 30px;
+      position: absolute;
+      bottom: 10%;
+      left: 2%;
+      padding: 0.5em 1em;
+      background: $lightBg;
+      border-radius: 20px;
+    }
+  }
+
+  .variant {
+    .quest-second-img {
+      padding: 6rem;
+      width: 20rem;
+    }
+  }
+}

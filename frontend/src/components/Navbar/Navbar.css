@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100vw;
+  padding: 2em 0;
+  z-index: 100000;
+}
+.header .navigation__link {
+  padding: 0 1em;
+}
+.header .link {
+  text-decoration: none;
+  color: #20b3d3;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=Navbar.css.map */

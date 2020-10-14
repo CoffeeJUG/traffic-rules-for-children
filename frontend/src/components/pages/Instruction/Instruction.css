@@ -1,0 +1,12 @@
+.instruction {
+  font-weight: 300;
+  font-size: 30px;
+  position: absolute;
+  bottom: 10%;
+  left: 2%;
+  padding: 0.5em 1em;
+  background: #fffadf;
+  border-radius: 20px;
+}
+
+/*# sourceMappingURL=Instruction.css.map */

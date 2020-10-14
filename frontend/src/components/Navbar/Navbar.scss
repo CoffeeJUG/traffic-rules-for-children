@@ -1,0 +1,26 @@
+@import './../../styles/colors.scss';
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  background-color: $semiTransparent;
+  width: 100vw;
+  padding: 2em 0;
+  z-index: 100000;
+
+  .navigation__link {
+    padding: 0 1em;
+  }
+
+  .link {
+    text-decoration: none;
+    color: $lightBlue;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
