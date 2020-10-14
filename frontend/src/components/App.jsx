@@ -6,7 +6,7 @@ import PuzzlePage from './PuzzlePage/PuzzlePage';
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <Navbar />
       <Quest />
       <PuzzlePage />
