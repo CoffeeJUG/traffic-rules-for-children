@@ -1,6 +1,9 @@
 package com.coffeejug.trafficrules.service;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
+
 import com.coffeejug.trafficrules.dto.UserDto;
 import com.coffeejug.trafficrules.exception.BadRequestException;
 import com.coffeejug.trafficrules.exception.NotFoundException;
@@ -29,7 +32,23 @@ public class UserService {
     }
 
     public UserDto save(UserDto userDto) {
-        User user = userRepository.save(modelMapper.map(userDto, User.class));
+
+        User user = null;
+        if (userDto.getUuid() != null) {
+            user = userRepository.findById(userDto.getUuid()).orElse(null);
+        }
+
+        if (user == null) {
+            user = new User();
+        }
+
+        if (user.getRegistered() == null) {
+            user.setRegistered(LocalDateTime.now());
+        }
+
+        modelMapper.map(userDto, user);
+        user.setLastActivity(LocalDateTime.now());
+        user = userRepository.save(user);
         return modelMapper.map(user, UserDto.class);
     }
 
@@ -40,4 +59,23 @@ public class UserService {
             throw new BadRequestException("Invalid UUID " + uuid);
         }
     }
+
+    public long count() {
+        return userRepository.count();
+    }
+
+    public long countAllByRegisteredAfter(LocalDateTime localDateTime) {
+        if (localDateTime == null) {
+            return count();
+        }
+        return userRepository.countAllByRegisteredAfter(localDateTime);
+    }
+
+    public long countAllByLastActivityAfter(LocalDateTime localDateTime) {
+        if (localDateTime == null) {
+            return count();
+        }
+        return userRepository.countAllByLastActivityAfter(localDateTime);
+    }
+
 }
