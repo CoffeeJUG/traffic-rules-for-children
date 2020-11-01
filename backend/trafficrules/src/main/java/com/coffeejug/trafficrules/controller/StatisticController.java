@@ -21,7 +21,7 @@ public class StatisticController {
 
     private final StatisticService statisticService;
     private final UserService userService;
-    private static final List<String> allowedTypes = Arrays.asList(
+    private static final List<String> ALLOWED_TYPES = Arrays.asList(
             new String[]{"TOTAL", "REGISTERED-FROM-START", "ACTIVE-FROM-START", "ACTIVE"}
     );
     
@@ -60,7 +60,7 @@ public class StatisticController {
     public long users(@RequestParam("type") String type,
                       @RequestParam(value = "lastSeconds", required = false, defaultValue = "600") long lastSeconds) {
 
-        if (type == null || !allowedTypes.contains(type.toUpperCase())) {
+        if (type == null || !ALLOWED_TYPES.contains(type.toUpperCase())) {
             throw new BadRequestException("Wrong type");
         }
 
