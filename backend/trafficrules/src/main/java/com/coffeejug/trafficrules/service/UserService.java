@@ -26,9 +26,14 @@ public class UserService {
     }
 
     public UserDto findById(String id) {
-        return userRepository.findById(parseUUID(id))
-                .map(user -> modelMapper.map(user, UserDto.class))
+
+        User user = userRepository.findById(parseUUID(id))
                 .orElseThrow(() -> new NotFoundException("User not found"));
+
+        user.setLastActivity(LocalDateTime.now());
+        user = userRepository.save(user);
+
+        return modelMapper.map(user, UserDto.class);
     }
 
     public UserDto save(UserDto userDto) {
