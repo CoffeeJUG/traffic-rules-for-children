@@ -1,0 +1,3 @@
+ALTER TABLE `users`
+	ADD COLUMN `registered` DATETIME(6) NULL DEFAULT NULL AFTER `name`,
+	ADD COLUMN `last_activity` DATETIME(6) NULL DEFAULT NULL AFTER `registered`;
