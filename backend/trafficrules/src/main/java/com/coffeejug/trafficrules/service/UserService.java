@@ -40,7 +40,7 @@ public class UserService {
 
         User user = null;
         if (userDto.getUuid() != null) {
-            user = userRepository.findById(userDto.getUuid()).orElse(null);
+            user = userRepository.findById(userDto.getUuid()).orElse(new User());
         }
 
         if (user == null) {

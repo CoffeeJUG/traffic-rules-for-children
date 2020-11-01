@@ -21,7 +21,10 @@ public class StatisticController {
 
     private final StatisticService statisticService;
     private final UserService userService;
-
+    private static final List<String> allowedTypes = Arrays.asList(
+            new String[]{"TOTAL", "REGISTERED-FROM-START", "ACTIVE-FROM-START", "ACTIVE"}
+    );
+    
     @Autowired
     public StatisticController(StatisticService statisticService, UserService userService) {
         this.statisticService = statisticService;
@@ -43,7 +46,6 @@ public class StatisticController {
         return statisticService.usersRegisteredFromStart();
     }
 
-
     @GetMapping("/users/active-from-start")
     public long usersActiveFromStart() {
         return statisticService.usersActiveFromStart();
@@ -57,10 +59,6 @@ public class StatisticController {
     @GetMapping("/users")
     public long users(@RequestParam("type") String type,
                       @RequestParam(value = "lastSeconds", required = false, defaultValue = "600") long lastSeconds) {
-
-        List<String> allowedTypes = Arrays.asList(
-                new String[]{"TOTAL", "REGISTERED-FROM-START", "ACTIVE-FROM-START", "ACTIVE"}
-        );
 
         if (type == null || !allowedTypes.contains(type.toUpperCase())) {
             throw new BadRequestException("Wrong type");
@@ -86,5 +84,4 @@ public class StatisticController {
 
         return result;
     }
-
 }
