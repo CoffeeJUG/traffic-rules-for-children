@@ -1,13 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Navbar from "./Navar";
-import Quest from "./pages/Quest";
+import Navbar from './Navbar/Navar';
+import Quest from './pages/QuestPage/Quest';
+import PuzzlePage from './PuzzlePage/PuzzlePage';
 
 function App() {
   return (
-    <div className='container'>
-      <Navbar/>
-      <Quest/>
+    <div>
+      <Navbar />
+      <Quest />
+      <PuzzlePage />
     </div>
   );
 }

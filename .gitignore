@@ -8,3 +8,5 @@
 /backend/trafficrules/src/main/resources/application.properties
 /backend/trafficrules/doc
 /backend/trafficrules/trafficrules.iml
+/frontend/node_modules
+node_modules
