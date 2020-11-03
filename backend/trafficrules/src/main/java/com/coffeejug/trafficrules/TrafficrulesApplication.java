@@ -14,6 +14,7 @@ public class TrafficrulesApplication {
     public static void main(String[] args) {
         SpringApplication.run(TrafficrulesApplication.class, args);
         logger.info("Started...");
+        System.out.println("Started...");
     }
 
 }

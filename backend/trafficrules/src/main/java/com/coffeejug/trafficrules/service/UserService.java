@@ -47,10 +47,6 @@ public class UserService {
             user = new User();
         }
 
-        if (user.getRegistered() == null) {
-            user.setRegistered(LocalDateTime.now());
-        }
-
         modelMapper.map(userDto, user);
         user.setLastActivity(LocalDateTime.now());
         user = userRepository.save(user);

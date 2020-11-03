@@ -22,6 +22,7 @@ public class User {
     private int levelsCompleted;
     private String name;
 
+    @Column(updatable = false)
     private LocalDateTime registered;
     private LocalDateTime lastActivity;
 
