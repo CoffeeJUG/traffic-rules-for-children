@@ -45,6 +45,7 @@ class UserServiceTest {
         UUID uuid = UUID.randomUUID();
         when(userRepository.findById(any()))
                 .thenReturn(Optional.of(new User(uuid, 5, "James Hatfield")));
+        when(userRepository.save(any())).then(a -> a.getArgument(0));
 
         UserDto existingUser = userService.findById(uuid.toString());
 
