@@ -1,33 +1,31 @@
 package com.coffeejug.trafficrules.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.lang.management.RuntimeMXBean;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import org.springframework.stereotype.Service;
 
 @Service
 public class StatisticService {
 
-    @Autowired
-    private RuntimeMXBean runtimeMXBean;
-    @Autowired
-    private UserService userService;
+    private final RuntimeMXBean runtimeMXBean;
+    private final UserService userService;
 
-    public long getUptime() {
+    public StatisticService(RuntimeMXBean runtimeMXBean, UserService userService) {
+        this.runtimeMXBean = runtimeMXBean;
+        this.userService = userService;
+    }
+
+    public long uptime() {
         return runtimeMXBean.getUptime();
     }
 
     public long usersRegisteredFromStart() {
-
-        long upTime = getUptime();
-        return userService.countAllByRegisteredAfter(LocalDateTime.now().minusSeconds(upTime / 1000));
+        return userService.countAllByRegisteredAfter(LocalDateTime.now().minus(uptime(), ChronoUnit.MILLIS));
     }
 
     public long usersActiveFromStart() {
-
-        long upTime = getUptime();
-        return userService.countAllByLastActivityAfter(LocalDateTime.now().minusSeconds(upTime / 1000));
+        return userService.countAllByLastActivityAfter(LocalDateTime.now().minus(uptime(), ChronoUnit.MILLIS));
     }
 
     public long usersActiveLastSeconds(long lastSeconds) {

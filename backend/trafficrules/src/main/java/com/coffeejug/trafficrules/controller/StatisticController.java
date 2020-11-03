@@ -4,13 +4,11 @@ import com.coffeejug.trafficrules.exception.BadRequestException;
 import com.coffeejug.trafficrules.service.StatisticService;
 import com.coffeejug.trafficrules.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class StatisticController {
 
     @GetMapping("/uptime")
     public long getUptime() {
-        return statisticService.getUptime();
+        return statisticService.uptime();
     }
 
     @GetMapping("/users/total")
