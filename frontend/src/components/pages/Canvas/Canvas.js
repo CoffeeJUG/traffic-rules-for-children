@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     startGame();
 })
-console.log(window.location.pathname)
+
 
 
 var GameArea = {
@@ -101,6 +101,7 @@ function updateGameArea() {
     GameArea.clear();
     if (GameArea.x && GameArea.y) {
         if(Marker.clicked()){
+            console.log(2);
             alert('clicked');
             GameArea.x = false;
             GameArea.y = false;
