@@ -65,7 +65,7 @@ class PuzzlePage extends Component {
                 ></div>
               </div>
             </div>
-            <a href="/" className="puzzle-page__button" onClick="sendAnswer()">
+            <a href="/" className="puzzle-page__button">
               Готово
             </a>
           </div>
