@@ -65,6 +65,6 @@ class StatisticServiceTest {
         verify(userService).countAllByRegisteredAfter(localDateTimeArgumentCaptor.capture());
         LocalDateTime calledValue = localDateTimeArgumentCaptor.getValue();
         assertThat(calledValue).isBefore(LocalDateTime.now());
-        assertThat(calledValue).isAfter(beforeServiceCall.minus(1000, ChronoUnit.MILLIS));
+        assertThat(calledValue).isAfterOrEqualTo(beforeServiceCall.minus(1000, ChronoUnit.MILLIS));
     }
 }
