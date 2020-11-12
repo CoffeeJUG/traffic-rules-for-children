@@ -17,12 +17,11 @@ import java.util.List;
 @RequestMapping("/api/v1/statistics")
 public class StatisticController {
 
+    private static final List<String> ALLOWED_TYPES = Arrays.asList(
+            "TOTAL", "REGISTERED-FROM-START", "ACTIVE-FROM-START", "ACTIVE");
     private final StatisticService statisticService;
     private final UserService userService;
-    private static final List<String> ALLOWED_TYPES = Arrays.asList(
-            new String[]{"TOTAL", "REGISTERED-FROM-START", "ACTIVE-FROM-START", "ACTIVE"}
-    );
-    
+
     @Autowired
     public StatisticController(StatisticService statisticService, UserService userService) {
         this.statisticService = statisticService;
