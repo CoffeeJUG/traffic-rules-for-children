@@ -4,6 +4,7 @@ import java.lang.management.RuntimeMXBean;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+import com.coffeejug.trafficrules.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -15,8 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class StatisticServiceTest {
@@ -25,6 +25,8 @@ class StatisticServiceTest {
     private RuntimeMXBean runtimeMXBean;
     @Mock
     private UserService userService;
+    @Mock
+    private UserRepository userRepository;
 
     @InjectMocks
     private StatisticService statisticService;
@@ -36,13 +38,6 @@ class StatisticServiceTest {
     void shouldReturnCorrectUptime() {
         when(runtimeMXBean.getUptime()).thenReturn(42L);
         assertThat(statisticService.uptime()).isEqualTo(42L);
-    }
-
-    @Test
-    void shouldReturnAllUsersActiveFromStart() {
-        when(runtimeMXBean.getUptime()).thenReturn(27L);
-        when(userService.countAllByLastActivityAfter(any())).thenReturn(5L);
-        assertThat(statisticService.usersActiveFromStart()).isEqualTo(5L);
     }
 
     @Test
@@ -65,6 +60,37 @@ class StatisticServiceTest {
         verify(userService).countAllByRegisteredAfter(localDateTimeArgumentCaptor.capture());
         LocalDateTime calledValue = localDateTimeArgumentCaptor.getValue();
         assertThat(calledValue).isBefore(LocalDateTime.now());
-        assertThat(calledValue).isAfterOrEqualTo(beforeServiceCall.minus(1000, ChronoUnit.MILLIS));
+        assertThat(calledValue).isAfterOrEqualTo(beforeServiceCall.minus(1000L, ChronoUnit.MILLIS));
     }
+
+    @Test
+    void shouldReturnAllUsersActiveFromStart() {
+        when(runtimeMXBean.getUptime()).thenReturn(27L);
+        when(userService.countAllByLastActivityAfter(any())).thenReturn(5L);
+
+        LocalDateTime beforeServiceCall = LocalDateTime.now();
+
+        assertThat(statisticService.usersActiveFromStart()).isEqualTo(5L);
+
+        verify(userService).countAllByLastActivityAfter(localDateTimeArgumentCaptor.capture());
+        LocalDateTime calledValue = localDateTimeArgumentCaptor.getValue();
+        assertThat(calledValue).isBefore(LocalDateTime.now());
+        assertThat(calledValue).isAfterOrEqualTo(beforeServiceCall.minus(27L, ChronoUnit.MILLIS));
+    }
+
+    @Test
+    void shouldReturnAllUsersActiveLastSeconds() {
+        when(userService.countAllByLastActivityAfter(any())).thenReturn(5L);
+
+        LocalDateTime beforeServiceCall = LocalDateTime.now();
+
+        long lastSeconds = 50L;
+        assertThat(statisticService.usersActiveLastSeconds(lastSeconds)).isEqualTo(5L);
+
+        verify(userService).countAllByLastActivityAfter(localDateTimeArgumentCaptor.capture());
+        LocalDateTime calledValue = localDateTimeArgumentCaptor.getValue();
+        assertThat(calledValue).isBefore(LocalDateTime.now());
+        assertThat(calledValue).isAfterOrEqualTo(beforeServiceCall.minus(lastSeconds, ChronoUnit.SECONDS));
+    }
+
 }
