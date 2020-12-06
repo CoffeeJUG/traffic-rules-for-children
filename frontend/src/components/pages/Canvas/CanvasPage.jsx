@@ -5,7 +5,7 @@ import  './Canvas';
 function CanvasPage() {
 
     return (
-        <div></div>
+        <button id="toggleFullScreen" data-toggle-fullscreen>Toggle Fullscreen</button>
     );
 }
 
