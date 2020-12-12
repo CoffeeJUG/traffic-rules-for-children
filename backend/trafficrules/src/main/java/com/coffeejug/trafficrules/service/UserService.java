@@ -1,7 +1,9 @@
 package com.coffeejug.trafficrules.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
+
 import com.coffeejug.trafficrules.dto.UserDto;
 import com.coffeejug.trafficrules.exception.BadRequestException;
 import com.coffeejug.trafficrules.exception.NotFoundException;
@@ -35,7 +37,7 @@ public class UserService {
 
     public UserDto save(UserDto userDto) {
         User user = null;
-        if (userDto.getUuid() != null) {
+        if (userDto != null && userDto.getUuid() != null) {
             user = userRepository.findById(userDto.getUuid()).orElse(new User());
         }
         if (user == null) {

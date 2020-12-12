@@ -1,5 +1,6 @@
 package com.coffeejug.trafficrules.controller;
 
+import com.coffeejug.trafficrules.dto.UserStatisticDto;
 import com.coffeejug.trafficrules.exception.BadRequestException;
 import com.coffeejug.trafficrules.service.StatisticService;
 import com.coffeejug.trafficrules.service.UserService;
@@ -80,5 +81,19 @@ public class StatisticController {
         }
 
         return result;
+    }
+
+    @GetMapping("/users/all-statistic")
+    public UserStatisticDto usersAllStatistic(
+            @RequestParam(value = "lastSeconds", required = false, defaultValue = "600") long lastSeconds
+    ) {
+
+        UserStatisticDto userStatisticDto = new UserStatisticDto(
+                userService.count(),
+                statisticService.usersRegisteredFromStart(),
+                statisticService.usersActiveFromStart(),
+                statisticService.usersActiveLastSeconds(lastSeconds)
+        );
+        return userStatisticDto;
     }
 }
