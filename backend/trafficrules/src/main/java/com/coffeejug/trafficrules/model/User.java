@@ -21,6 +21,7 @@ public class User {
     private UUID uuid;
     private int levelsCompleted;
     private String name;
+    private String email;
 
     @Column(updatable = false)
     private LocalDateTime registered;
@@ -78,6 +79,14 @@ public class User {
 
     public void setLastActivity(LocalDateTime lastActivity) {
         this.lastActivity = lastActivity;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
