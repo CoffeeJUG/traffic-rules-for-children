@@ -2,25 +2,24 @@ package com.coffeejug.trafficrules.dto;
 
 import java.util.Objects;
 import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
+
+    private UUID uuid;
+    private int levelsCompleted;
+    private String name;
+    private String email;
 
     public UserDto(UUID uuid, int levelsCompleted, String name) {
         this.uuid = uuid;
         this.levelsCompleted = levelsCompleted;
         this.name = name;
     }
-
     public UserDto() {
     }
-
-    private UUID uuid;
-
-    private int levelsCompleted;
-
-    private String name;
 
     public UUID getUuid() {
         return uuid;
@@ -49,6 +48,14 @@ public class UserDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
