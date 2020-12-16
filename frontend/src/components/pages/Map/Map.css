@@ -1,0 +1,25 @@
+.quest-main__map{
+  height: 100vh;
+  width: auto;
+}
+.quest-main-img{
+  height: 1024px;
+  width: 1440px;
+}
+.quest-marker1-img {
+  position: absolute;
+  height: 83px;
+  width: 57px;
+  left: 151px;
+  top: 384px;
+}
+.quest-marker2-img {
+  position: absolute;
+  width: 57px;
+  height: 83px;
+  left: 105px;
+  top: 667px;
+}
+
+
+/*# sourceMappingURL=Quest.css.map */
