@@ -7,11 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "users")
 public class User {
+
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
+    private UUID uuid;
+    @Column(columnDefinition = "INT NOT NULL DEFAULT '0'")
+    private int levelsCompleted;
+    private String name;
+    private String email;
 
     public User() {
     }
@@ -21,22 +32,10 @@ public class User {
         this.levelsCompleted = levelsCompleted;
         this.name = name;
     }
-
     public User(int levelsCompleted, String name) {
         this.levelsCompleted = levelsCompleted;
         this.name = name;
     }
-
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID uuid;
-
-    @Column(columnDefinition = "INT NOT NULL DEFAULT '0'")
-    private int levelsCompleted;
-
-    private String name;
 
     public UUID getUuid() {
         return uuid;
@@ -60,6 +59,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
