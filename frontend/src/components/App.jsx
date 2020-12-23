@@ -8,21 +8,18 @@ import BestPlayers from "./pages/BestPlayers/BestPlayers";
 import Profile from "./pages/Profile/Profile";
 import Pazzle1 from "./pages/Pazzle1/Pazzle1";
 import MainPage from "./pages/MainPage/MainPage";
-
-
-
-
-
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 Cookies.set('puzzle-kid-game', 
 	{
 	"name" : "Irusya",
 	"completedLevel" : 5,
 	"mistakes" : 3,
+	"fullscreen" : 1,
 	}
 );
-console.log(Cookies.get('puzzle-kid-game'));
+
+console.log(JSON.parse(Cookies.get('puzzle-kid-game')).fullscreen);
 
 function App() {
   return (
@@ -39,5 +36,4 @@ function App() {
       </BrowserRouter>
   );
 }
-
 export default App;
