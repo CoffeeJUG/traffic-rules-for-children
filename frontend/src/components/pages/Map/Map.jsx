@@ -22,13 +22,14 @@ function Map() {
 
 
   return (
-      <div>
       <div className="quest-main__map">
+        <div className="quest-main__map__background">
           <img src={bg} alt="..." className="quest-main-img" />
           <a href="/pazzle"><img src={marker1} alt="..." className="quest-marker1-img" /></a>
           <a href="/pazzle-1"><img src={marker2} alt="..." className="quest-marker2-img" /></a>
-      </div>
-    <button id="toggleFullScreen" data-toggle-fullscreen>Toggle Fullscreen</button>
+          <button id="toggleFullScreen" data-toggle-fullscreen>Toggle Fullscreen</button>
+        </div>
+          
       </div>
   );
 }

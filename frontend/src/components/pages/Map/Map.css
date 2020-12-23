@@ -1,10 +1,15 @@
 .quest-main__map{
-  height: 100vh;
-  width: auto;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 .quest-main-img{
-  height: 1024px;
-  width: 1440px;
+/*height: 100%;
+width: 100%;*/
+/*dont need this*/
+}
+.quest-main__map__background{
+  transform: translate(-93px, -49px);
 }
 .quest-marker1-img {
   position: absolute;
@@ -20,6 +25,19 @@
   left: 105px;
   top: 667px;
 }
-
+#toggleFullScreen,
+#toggleFullScreen:focus{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 5px;
+  background: #000;
+  color: #fff;
+  font-family: Roboto;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
 
 /*# sourceMappingURL=Quest.css.map */

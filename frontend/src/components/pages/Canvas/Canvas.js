@@ -168,3 +168,42 @@ document.addEventListener('click', function (event) {
     }
 
 }, false);
+
+var mapDrag = document.querySelector('.quest-main__map__background');
+console.log(mapDrag);
+// mapDrag.addEventListener('mousedown', function(event) {
+
+//   let shiftX = event.clientX - mapDrag.getBoundingClientRect().left;
+//   let shiftY = event.clientY - mapDrag.getBoundingClientRect().top;
+
+//   mapDrag.style.position = 'absolute';
+//   mapDrag.style.zIndex = 1;
+//   document.body.append(mapDrag);
+
+//   moveAt(event.pageX, event.pageY);
+
+//   // moves the mapDrag at (pageX, pageY) coordinates
+//   // taking initial shifts into account
+//   function moveAt(pageX, pageY) {
+//     mapDrag.style.left = pageX - shiftX + 'px';
+//     mapDrag.style.top = pageY - shiftY + 'px';
+//   }
+
+//   function onMouseMove(event) {
+//     moveAt(event.pageX, event.pageY);
+//   }
+
+//   // move the mapDrag on mousemove
+//   document.addEventListener('mousemove', onMouseMove);
+
+//   // drop the mapDrag, remove unneeded handlers
+//   mapDrag.onmouseup = function() {
+//     document.removeEventListener('mousemove', onMouseMove);
+//     mapDrag.onmouseup = null;
+//   };
+
+// })
+
+// mapDrag.ondragstart = function() {
+//   return false;
+// };
