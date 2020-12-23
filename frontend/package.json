@@ -12,12 +12,8 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
-    "react-scripts": "^4.0.1",
-=======
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
->>>>>>> 65c8db488da5cbd834c88bb85b253ac045d17eb6
     "reactstrap": "^8.5.1"
   },
   "scripts": {
