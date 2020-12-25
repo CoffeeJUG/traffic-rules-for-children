@@ -8,9 +8,7 @@ import BestPlayers from "./pages/BestPlayers/BestPlayers";
 import Profile from "./pages/Profile/Profile";
 import Pazzle1 from "./pages/Pazzle1/Pazzle1";
 import MainPage from "./pages/MainPage/MainPage";
-
-
-
+import Quest from "./pages/QuestPage/Quest";
 
 
 function App() {
@@ -23,7 +21,8 @@ function App() {
               <Route path='/pazzle' component={Pazzle}/>
               <Route path='/pazzle-1' component={Pazzle1}/>
               <Route path='/bestPlayers' component={BestPlayers}/>
-              <Route path='/profile' component={Profile}/>
+          <Route path='/profile' component={Profile}/>
+          <Route path='/quest' component={Quest}/>
         </div>
       </BrowserRouter>
   );
