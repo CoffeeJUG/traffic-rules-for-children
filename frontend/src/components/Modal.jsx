@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 const ModalForm = (props) => {
-  const {description, correct, activeModal, modal} = props;
+  const { description, correct, activeModal, modal } = props;
 
   const toggle = () => {
     activeModal();
