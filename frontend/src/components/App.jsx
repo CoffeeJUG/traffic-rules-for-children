@@ -22,7 +22,7 @@ Cookies.set('green-light_profile',
 let game = {
 	pazzles: {
 		0:{
-			name: '1',
+			questNumber: '1',
 			task: 'select',
 			description: 'Обери знак, який дозволяє безпечно перейти дорогу.',
 			styles: {
@@ -31,7 +31,7 @@ let game = {
 			}
 		},
 		1:{
-			name: '2',
+			questNumber: '2',
 			task: 'select',
 			description: 'Обери знак, який дозволяє безпечно перейти дорогу2.',
 			styles: {

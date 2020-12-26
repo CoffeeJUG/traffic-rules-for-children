@@ -3,7 +3,7 @@ import './Map.css';
 import ModalForm from '../../Modal';
 import { get } from 'lodash';
 import bg from '../../../images/bg.jpg';
-import markerIMG from '../../../images/marker1.png';
+import markerIMG from '../../../images/marker.png';
 
 
 function Map(props) {
@@ -16,7 +16,10 @@ function Map(props) {
   };
 
   const markers = Object.keys(props.pazzles).map(key => 
-    <a href="/pazzle" className="quest-marker" style={props.pazzles[key].styles}><img src={markerIMG} alt="..." /></a>
+    <a href="/pazzle" className="quest-marker" style={props.pazzles[key].styles}>
+    <img src={markerIMG} alt="..." />
+    <span className="quest-marker__questNumber">{props.pazzles[key].questNumber}</span>
+    </a>
   )
 
 
