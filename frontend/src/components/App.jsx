@@ -9,17 +9,16 @@ import Profile from "./pages/Profile/Profile";
 import MainPage from "./pages/MainPage/MainPage";
 import Cookies from 'js-cookie';
 // cookie set exmpl
-// Cookies.set('green-light_profile', 
-// 	{
-// 	"name" : "Irusya",
-// 	"completedLevel" : 5,
-// 	"mistakes" : 3,
-// 	"fullscreen" : 1,
-// 	"progress" : 2,
-// 	}
-// );
+Cookies.set('green-light_profile', 
+	{
+		"name" : "Irusya",
+		"completedLevel" : 5,
+		"mistakes" : 3,
+		"fullscreen" : 1,
+		"progress" : 2
+	}
+);
 
-// console.log(JSON.parse(Cookies.get('puzzle-kid-game')).fullscreen);
 let game = {
 	pazzles: {
 		0:{
