@@ -4,14 +4,9 @@ import './Pazzle.css';
 
 import pazzle from '../../../images/pazzle.jpg';
 
-function Pazzle() {
-
-
-
-
+function Pazzle(props) {
   return (
       <div>
-
           <img src={pazzle} alt="..." className="pazzle-main-img" />
 
       </div>
