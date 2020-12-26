@@ -6,20 +6,45 @@ import Map from './pages/Map/Map';
 import Pazzle from "./pages/Pazzle/Pazzle";
 import BestPlayers from "./pages/BestPlayers/BestPlayers";
 import Profile from "./pages/Profile/Profile";
-import Pazzle1 from "./pages/Pazzle1/Pazzle1";
 import MainPage from "./pages/MainPage/MainPage";
 import Cookies from 'js-cookie';
+// cookie set exmpl
+// Cookies.set('green-light_profile', 
+// 	{
+// 	"name" : "Irusya",
+// 	"completedLevel" : 5,
+// 	"mistakes" : 3,
+// 	"fullscreen" : 1,
+// 	"progress" : 2,
+// 	}
+// );
 
-Cookies.set('puzzle-kid-game', 
-	{
-	"name" : "Irusya",
-	"completedLevel" : 5,
-	"mistakes" : 3,
-	"fullscreen" : 1,
+// console.log(JSON.parse(Cookies.get('puzzle-kid-game')).fullscreen);
+let game = {
+	pazzles: {
+		0:{
+			name: '1',
+			task: 'select',
+			description: 'Обери знак, який дозволяє безпечно перейти дорогу.',
+			styles: {
+				left: 1240,
+				top: 504 
+			}
+		},
+		1:{
+			name: '2',
+			task: 'select',
+			description: 'Обери знак, який дозволяє безпечно перейти дорогу2.',
+			styles: {
+				left: 1570,
+				top: 504 
+			}
+		},
+	},
+	player: {
+		progress: '3',
 	}
-);
-
-console.log(JSON.parse(Cookies.get('puzzle-kid-game')).fullscreen);
+}
 
 function App() {
   return (
@@ -27,9 +52,18 @@ function App() {
         <div>
             <Navbar />
             <Route path='/mainPage' component={MainPage}/>
-              <Route path='/map' component={Map}/>
-              <Route path='/pazzle' component={Pazzle}/>
-              <Route path='/pazzle-1' component={Pazzle1}/>
+              <Route path='/map' render={(props) => (
+              	<Map {...props}
+              		pazzles={game.pazzles}
+              		progress={game.player.progress}
+              	/>
+              )}/>
+              <Route path='/pazzle' render={(props) => (
+			    <Pazzle {...props} 
+			    />
+			  )}/>
+              {/*Will use pazzle as main component for all pazzles*/}
+              {/*<Route path='/pazzle-1' component={Pazzle1}/>*/}
               <Route path='/bestPlayers' component={BestPlayers}/>
               <Route path='/profile' component={Profile}/>
         </div>

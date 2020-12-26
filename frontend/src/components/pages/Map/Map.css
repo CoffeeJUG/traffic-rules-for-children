@@ -11,19 +11,10 @@ width: 100%;*/
 .quest-main__map__background{
   transform: translate(-93px, -49px);
 }
-.quest-marker1-img {
+.quest-marker {
   position: absolute;
   height: 83px;
   width: 57px;
-  left: 151px;
-  top: 384px;
-}
-.quest-marker2-img {
-  position: absolute;
-  width: 57px;
-  height: 83px;
-  left: 105px;
-  top: 667px;
 }
 #toggleFullScreen,
 #toggleFullScreen:focus{
@@ -38,6 +29,7 @@ width: 100%;*/
   border-radius: 5px;
   border: none;
   outline: none;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=Quest.css.map */
