@@ -30,4 +30,11 @@ $(document).ready(function() {
 	// }); 
 	// return false;
 	// });
+	if(typeof(Cookies.get('username')) == 'undefined'){
+		console.log('here funct to show modal');
+	}
+	$(document).on('submit', '.signin', function(e){
+		Cookies.set('username', $('#username').val());
+		console.log('here func to close modal');
+	})
 });
