@@ -1,13 +1,17 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from './Navbar/Navar';
-import Map from './pages/Map/Map';
 import Pazzle from "./pages/Pazzle/Pazzle";
 import BestPlayers from "./pages/BestPlayers/BestPlayers";
 import Profile from "./pages/Profile/Profile";
 import MainPage from "./pages/MainPage/MainPage";
+import Map from './pages/Map/Map';
 import Cookies from 'js-cookie';
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+
+import 'bootstrap/dist/css/bootstrap.css';
 // cookie set exmpl
 Cookies.set('green-light_profile', 
 	{
@@ -23,11 +27,22 @@ let game = {
 	pazzles: {
 		0:{
 			questNumber: '1',
-			task: 'select',
+			task: {
+				type: 'select'
+				elements: {
+					0: {
+						correct: false,
+						
+					}
+				}
+			}
 			description: 'Обери знак, який дозволяє безпечно перейти дорогу.',
 			styles: {
-				left: 1240,
-				top: 504 
+				left: 137,
+				top: 364 
+			}
+			elements: {
+
 			}
 		},
 		1:{
@@ -35,8 +50,8 @@ let game = {
 			task: 'select',
 			description: 'Обери знак, який дозволяє безпечно перейти дорогу2.',
 			styles: {
-				left: 1570,
-				top: 504 
+				left: 100,
+				top: 670 
 			}
 		},
 	},

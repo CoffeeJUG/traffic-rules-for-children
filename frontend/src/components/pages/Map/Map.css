@@ -9,7 +9,7 @@ width: 100%;*/
 /*dont need this*/
 }
 .quest-main__map__background{
-  transform: translate(-93px, -49px);
+  transform: translate(0px, 0px);
 }
 .quest-marker {
   position: absolute;
