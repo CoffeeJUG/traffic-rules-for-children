@@ -2,6 +2,7 @@ $(document).ready(function(){
 	$(document).on('click', '.quest-marker',function(){
 		$('.mapImg').css('transform', 'scale(4) translate(800px, 70px)');
 		$('.quest-marker').addClass('hide');
+		$('.clouds').hide();
 	})
 
 	function buildCloud1()  {
