@@ -1,0 +1,70 @@
+body{   
+    width: 100vw;
+    /*overflow: hidden;*/
+    max-height: 100vh;
+    position: relative;
+}
+.quest-main__map{
+    height: 100vh;
+    width: 100vw;
+    /*overflow: hidden;*/
+    /*makes map invisible*/
+}
+.quest-main-img{
+/*height: 100%;
+width: 100%;*/
+/*dont need this*/
+}
+.quest-main__map__background{
+  transform: translate(0px, 0px);
+}
+.quest-marker {
+  position: absolute;
+  height: 83px;
+  width: 57px;
+}
+.quest-marker__questNumber{
+  position: absolute;
+  top: 17px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #000;
+}
+#toggleFullScreen,
+#toggleFullScreen:focus{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 5px;
+  background: #000;
+  color: #fff;
+  font-family: Roboto;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  z-index: 1;
+}
+.quest-marker.hide{
+	display: none;
+}
+.mapImg{
+	transition: transform .7s ease-in;
+}
+.taxi img{
+	-webkit-animation: 5s linear 0s infinite normal  taxi1;
+     -moz-animation: 5s linear 0s infinite normal  taxi1;
+       -o-animation: 5s linear 0s infinite normal  taxi1;
+          animation: 5s linear 0s infinite normal  taxi1;
+}
+@-webkit-keyframes taxi1 { from { left: -50px; } to { left: 700px; }  }
+   @-moz-keyframes taxi1 { from { left: -50px; } to { left: 700px; }  }
+     @-o-keyframes taxi1 { from { left: -50px; } to { left: 700px; }  }
+        @keyframes taxi1 { from { left: -50px; } to { left: 700px; }  }
+
+div.clouds svg{
+  position: absolute;
+  top: 0px;
+  left: 350px;
+}
