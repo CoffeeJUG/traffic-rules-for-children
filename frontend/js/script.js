@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	$(document).on('click', '.quest-marker',function(){
 
-		var moveY = (window.innerHeight / 2) + (parseInt($(this).css('top')) + 83 / 2)*-1;
-		var moveX = (window.innerWidth / 2) + (parseInt($(this).css('left')) + 57 / 2)*-1;
+		var moveY = ((  $('.mapImg').innerHeight() ) /2) + (parseInt($(this).css('top')) + 83 / 2)*-1;
+		var moveX = ((  $('.mapImg').innerWidth() ) /2) + (parseInt($(this).css('left')) + 57 / 2)*-1;
 		window.scrollTo(0,0);
-		$('.mapImg').css('transform', 'scale(3) translate('+moveX+'px, '+moveY+'px)');
+		$('.mapImg').css('transform', 'scale(2) translate('+moveX+'px,'+moveY+'px)' );
 		$('.quest-marker').addClass('hide');
 		$('.clouds').hide();
 	})

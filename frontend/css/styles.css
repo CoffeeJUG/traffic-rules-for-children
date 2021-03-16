@@ -1,6 +1,6 @@
 body{   
     width: 100vw;
-    overflow: hidden;
+    /*overflow: hidden;*/
     max-height: 100vh;
     position: relative;
 }
@@ -33,7 +33,7 @@ width: 100%;*/
 }
 #toggleFullScreen,
 #toggleFullScreen:focus{
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   padding: 5px;
